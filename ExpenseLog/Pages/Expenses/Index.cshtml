@@ -1,0 +1,94 @@
+﻿@page
+@model ExpenseLog.Pages.Expenses.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!--
+    TODO:
+    - Feed User ID into Page
+
+    Notes: [Vilan]
+    Please give me idea of how you see the pages if possible.
+
+    I am currently just gonna try to fill the pages to give an overall look but if you guys have
+    any suggestions or ideas in mind, feel free to add in the comments area I will provide, thank you :)
+-->
+
+
+<!-- Title Area -->
+<br />
+<br />
+<div class="row">
+    <p class="h1">Ledger</p>
+</div>
+
+<!-- Controls Area -->
+<div class="row my-3 col-8">
+    <!-- Combined Search + Category Filter -->
+    <div class="col">
+        <form method="get">
+            <div class="input-group mb-2">
+                <!-- Search Input -->
+                <input type="text" asp-for="toFind" class="form-control" placeholder="Search all fields" />
+
+                <!-- Category Dropdown -->
+                <select asp-for="SelectedCategory" asp-items="Model.CategoryOptions" class="form-select mx-2">
+                    <option value="">All Categories</option>
+                </select>
+
+                <!-- Search Button -->
+                <button type="submit" class="btn btn-secondary">Search</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- New Entry Button -->
+    <a asp-page="Create" class="btn btn-primary" style="max-width: 1.25in;">New Entry</a>
+</div>
+
+<!-- Table Area -->
+<div class="row">
+    <table class="table table-borderless table-striped table-hover">
+
+        <!-- Main Header of Table -->
+        <thead>
+            <tr class="border-bottom">
+                <!--  <th>@Html.DisplayNameFor(model => model.Expense[0].UserID)</th> -->
+                <th>Email</th>
+                <th>@Html.DisplayNameFor(model => model.Expense[0].Category)</th>
+                <th>@Html.DisplayNameFor(model => model.Expense[0].Product)</th>
+                <th>@Html.DisplayNameFor(model => model.Expense[0].Description)</th>
+                <th>@Html.DisplayNameFor(model => model.Expense[0].Shop)</th>
+                <th>@Html.DisplayNameFor(model => model.Expense[0].Mall)</th>
+                <th>@Html.DisplayNameFor(model => model.Expense[0].Contact)</th>
+                <th>@Html.DisplayNameFor(model => model.Expense[0].Date)</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <!-- Content Area -->
+        <tbody>
+            @foreach (var item in Model.Expense)
+            {
+                <tr>
+                    <!-- <td>@Html.DisplayFor(modelItem => item.UserID)</td> -->
+                    <td>@item.User?.Email</td>
+                    <td>@Html.DisplayFor(modelItem => item.Category)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Product)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Shop)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Mall)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Contact)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-secondary">Edit</a>
+                        <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-info">Details</a>
+                        <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

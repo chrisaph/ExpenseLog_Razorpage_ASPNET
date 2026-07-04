@@ -1,0 +1,110 @@
+﻿@page
+@model ExpenseLog.Pages.Expenses.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<!--
+    Notes: [Vilan]
+    Please give me idea of how you see the pages if possible.
+
+    I am currently just gonna try to fill the pages to give an overall look but if you guys have
+    any suggestions or ideas in mind, feel free to add in the comments area I will provide, thank you :)
+-->
+<br />
+<br />
+<div class="row">
+    <div class="col-md-4 container-fluid">
+        <h1><b>Expense</b> - Edit</h1>
+        <form method="post">
+            <!-- Danger -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Validation -->
+            <input type="hidden" asp-for="Expense.ID" />
+
+            <div class="row container-fluid mb-3">
+                <!-- User ID -->
+                <div class="form-group col-md-6">
+                    <input asp-for="Expense.UserID" type="hidden" class="form-control" placeholder="User ID" />
+                    <span asp-validation-for="Expense.UserID" class="text-danger"></span>
+                </div>
+
+                <!-- Date -->
+                <div class="form-group col-md-6">
+                    <input asp-for="Expense.Date" type="hidden" class="form-control" />
+                    <span asp-validation-for="Expense.Date" class="text-danger"></span>
+                </div>
+
+                <!-- Product -->
+                <div class="form-group mb-3">
+                    <label asp-for="Expense.Product" class="form-label h4">Product</label>
+                    <input asp-for="Expense.Product" class="form-control" />
+                    <span asp-validation-for="Expense.Product" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="row container-fluid mb-3">
+                <!-- Shop -->
+                <div class="form-group col-md-6">
+                    <label asp-for="Expense.Shop" class="control-label h4">Shop</label>
+                    <input asp-for="Expense.Shop" class="form-control" />
+                    <span asp-validation-for="Expense.Shop" class="text-danger"></span>
+                </div>
+
+
+                <!-- Category -->
+                <div class="form-group col-md-6">
+                    <label asp-for="Expense.Category" class="form-label h4">Category</label>
+                    <input asp-for="Expense.Category" class="form-control" />
+                    <span asp-validation-for="Expense.Category" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row container-fluid mb-3">
+
+                <!-- Mall -->
+                <div class="form-group col-md-6">
+                    <label asp-for="Expense.Mall" class="control-label h4">Mall</label>
+                    <input asp-for="Expense.Mall" class="form-control" />
+                    <span asp-validation-for="Expense.Mall" class="text-danger"></span>
+                </div>
+
+                <!-- Contact -->
+                <div class="form-group col-md-6">
+                    <label asp-for="Expense.Contact" class="control-label h4">Contact</label>
+                    <input asp-for="Expense.Contact" class="form-control" />
+                    <span asp-validation-for="Expense.Contact" class="text-danger"></span>
+                </div>
+
+               
+            </div>
+
+            <div class="row container-fluid">
+                <!-- Description -->
+                <div class="form-group mb-3">
+                    <label asp-for="Expense.Description" class="control-label h4">Description</label>
+                    <textarea asp-for="Expense.Description" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="Expense.Description" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row container-fluid mb-5">
+                <div class="col-md-6 input-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-page="./Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+
+            <!-- Button -->
+
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

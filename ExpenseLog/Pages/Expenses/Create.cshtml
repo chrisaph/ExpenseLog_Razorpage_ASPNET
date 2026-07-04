@@ -1,0 +1,105 @@
+﻿@page
+@model ExpenseLog.Pages.Expenses.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<!--
+    Notes: [Vilan]
+    Please give me idea of how you see the pages if possible.
+
+    I am currently just gonna try to fill the pages to give an overall look but if you guys have
+    any suggestions or ideas in mind, feel free to add in the comments area I will provide, thank you :)
+-->
+<!-- Title Area -->
+<br />
+<br />
+<div class="row">
+    <h1><b>Expense</b> - Create</h1>
+</div>
+
+<div class="row col-6 container-fluid">
+    <hr />
+    @if (TempData["debugMessage"] != null)
+    {
+        <div class="alert alert-info mb-3">@TempData["debugMessage"]</div>
+    }
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <input type="hidden" asp-for="Expense.UserID" />
+        </div>
+
+        <!-- <div class="form-group">
+                            <label asp-for="Expense.UserID" class="control-label"></label>
+                            <input asp-for="Expense.UserID" class="form-control" />
+                            <span asp-validation-for="Expense.UserID" class="text-danger"></span>
+                        </div> -->
+
+        <div class="row mb-3">
+            <div class="form-group col-6">
+                <label asp-for="Expense.Product" class="control-label h4">Product</label>
+                <input asp-for="Expense.Product" class="form-control" />
+                <span asp-validation-for="Expense.Product" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-6">
+                <label asp-for="Expense.Category" class="control-label h4">Category</label>
+                <input asp-for="Expense.Category" class="form-control" />
+                <span asp-validation-for="Expense.Category" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="form-group col-6">
+                <label asp-for="Expense.Shop" class="control-label h4">Shop</label>
+                <input asp-for="Expense.Shop" class="form-control" />
+                <span asp-validation-for="Expense.Shop" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <label asp-for="Expense.Mall" class="control-label h4">Mall</label>
+                <input asp-for="Expense.Mall" class="form-control" />
+                <span asp-validation-for="Expense.Mall" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="form-group col-6">
+                <label asp-for="Expense.Contact" class="control-label h4">Contact</label>
+                <input asp-for="Expense.Contact" class="form-control" />
+                <span asp-validation-for="Expense.Contact" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <label asp-for="Expense.Date" class="control-label h4">Date</label>
+                <input asp-for="Expense.Date" class="form-control" />
+                <span asp-validation-for="Expense.Date" class="text-danger"></span>
+            </div>
+        </div>
+
+
+
+        <div class="form-group mb-3">
+            <label asp-for="Expense.Description" class="control-label h4">Description</label>
+            <textarea asp-for="Expense.Description" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Expense.Description" class="text-danger"></span>
+        </div>
+
+        <div class="row mb-3 col-6">
+            <div class="btn-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </div>
+
+
+
+    </form>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

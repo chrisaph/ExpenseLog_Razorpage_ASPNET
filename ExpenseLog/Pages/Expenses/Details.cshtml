@@ -1,0 +1,79 @@
+﻿@page
+@model ExpenseLog.Pages.Expenses.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!--
+    Notes: [Vilan]
+    Please give me idea of how you see the pages if possible.
+
+    I am currently just gonna try to fill the pages to give an overall look but if you guys have
+    any suggestions or ideas in mind, feel free to add in the comments area I will provide, thank you :)
+-->
+<br />
+<br />
+<h1><b>Expense</b> - Details</h1>
+
+<div class="container-fluid">
+    <hr />
+
+    <!-- Information Area -->
+    <dl class="row">
+        <dt class="col-sm-2">
+            Email
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Expense.User?.Email
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Expense.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Expense.Category)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Expense.Product)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Expense.Product)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Expense.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Expense.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Expense.Shop)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Expense.Shop)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Expense.Mall)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Expense.Mall)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Expense.Contact)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Expense.Contact)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Expense.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Expense.Date)
+        </dd>
+    </dl>
+</div>
+
+<!-- Button Are -->
+<div class="btn-group mb-3">
+    <a asp-page="./Edit" asp-route-id="@Model.Expense.ID" class="btn btn-primary">Edit</a>
+    <a asp-page="./Index" class="btn btn-secondary">Back to List</a>
+</div>
